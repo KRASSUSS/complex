@@ -1,0 +1,22 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t krasus/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true krasus/react-test npm test
+
+after_success:
+  - docker build -t krasus/multi-client ./client
+  - docker build -t krasus/multi-nginx ./nginx
+  - docker build -t krasus/multi-server ./server
+  - docker build -t krasus/multi-worker ./worker
+  #DOCKER LOGIN
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  #PUSH IMAGES TO DOCKER
+  - docker push krasus/multi-client
+  - docker push krasus/multi-nginx
+  - docker push krasus/multi-server
+  - docker push krasus/multi-worker

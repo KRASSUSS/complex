@@ -9,14 +9,14 @@ script:
   - docker run -e CI=true krasus/react-test npm test
 
 after_success:
-  - docker build -t krasus/multi-client ./client
-  - docker build -t krasus/multi-nginx ./nginx
-  - docker build -t krasus/multi-server ./server
-  - docker build -t krasus/multi-worker ./worker
+  - docker build -t krassuss/multi-client ./client
+  - docker build -t krassuss/multi-nginx ./nginx
+  - docker build -t krassuss/multi-server ./server
+  - docker build -t krassuss/multi-worker ./worker
   #DOCKER LOGIN
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   #PUSH IMAGES TO DOCKER
-  - docker push krasus/multi-client
-  - docker push krasus/multi-nginx
-  - docker push krasus/multi-server
-  - docker push krasus/multi-worker
+  - docker push krassuss/multi-client
+  - docker push krassuss/multi-nginx
+  - docker push krassuss/multi-server
+  - docker push krassuss/multi-worker

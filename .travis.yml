@@ -24,10 +24,10 @@ after_success:
 deploy:
   provider: elasticbeanstalk
   region: 'eu-west-1'
-  app: 'rambo'
-  env: 'Rambo-env'
+  app: 'rocky'
+  env: 'Rocky-env'
   bucket_name: 'elasticbeanstalk-eu-west-1-022581416481'
-  bucket_path: 'rambo'
+  bucket_path: 'rocky'
   on:
     branch: master
   access_key_id: $AWS_ACCESS_KEY

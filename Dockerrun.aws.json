@@ -27,7 +27,8 @@
             "image": "krassuss/multi-nginx",
             "hostaname":"nginx",
             "essential":true,
-            "portMappings":[{
+            "portMappings":[
+                {
                 "hostPort": 80,
                 "containerPort": 80
             }],

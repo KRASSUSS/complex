@@ -1,0 +1,35 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+        {
+            "name":"client",
+            "image": "krassuss/multi-client",
+            "hostaname":"client",
+            "essential":false
+        },
+        {
+            "name":"server",
+            "image": "krassuss/multi-server",
+            "hostaname":"api",
+            "essential":false
+        },
+        {
+            "name":"worker",
+            "image": "krassuss/multi-worker",
+            "hostaname":"worker",
+            "essential":false
+        },
+        {
+            "name":"nginx",
+            "image": "krassuss/multi-nginx",
+            "hostaname":"nginx",
+            "essential":true,
+            "portMappings":[{
+                "hostPort": 80,
+                "containerPort": 80
+            }],
+            "links":["client", "server"]
+        }
+
+    ]
+}

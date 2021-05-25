@@ -20,3 +20,14 @@ after_success:
   - docker push krassuss/multi-nginx
   - docker push krassuss/multi-server
   - docker push krassuss/multi-worker
+deploy:
+  provider: elasticbeanstalk
+  region: 'eu-west-1'
+  app: 'rambo'
+  env: 'Rambo-env'
+  bucket_name: 'elasticbeanstalk-eu-west-1-022581416481'
+  bucket_path: 'rambo'
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY

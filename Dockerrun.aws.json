@@ -22,17 +22,17 @@
             "essential": false,
             "memory": 128
         },			   	   
-        {
+		{
             "name":"nginx",
             "image": "krassuss/multi-nginx",
-            "hostaname":"nginx",
+            "hostname":"nginx",
             "essential":true,
             "portMappings":[
                 {
                 "hostPort": 80,
                 "containerPort": 80
             }],
-            "links":["client", "server"],
+            "links": ["client", "server"],
             "memory": 128
         }
 
